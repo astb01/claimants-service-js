@@ -1,0 +1,90 @@
+{
+    "all": {
+        "body": {
+            "data": [
+                {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "nino": "HG123456T"
+                }
+            ]
+        },
+        "response": {
+            "statusCode": 200,
+            "headers": {
+                "content-type": "application/json"
+            }
+        }
+    },
+    "claimant": {
+        "create": {
+            "body": {
+                "data": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "nino": "HG123456T"
+                }
+            },
+            "response": {
+                "statusCode": 201,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        },
+        "get": {
+            "body": {
+                "data": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "nino": "HG123456T"
+                }
+            },
+            "response": {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        },
+        "update": {
+            "body": {},
+            "response": {
+                "statusCode": 204,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        },
+        "delete": {
+            "body": {},
+            "response": {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        }
+    },
+    "failures": {
+        "notFound": {
+            "response": {
+                "statusCode": 404,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        },
+        "invalidNino": {
+            "response": {
+                "statusCode": 400,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            }
+        }
+    }
+}

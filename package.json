@@ -1,0 +1,51 @@
+{
+  "name": "claimants-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon server.js",
+    "lint": "eslint . --ext .js --fix",
+    "unit": "NODE_ENV=test nyc mocha tests/specs/unit/*-spec.js --timeout 10000 --exit || true",
+    "integration": "NODE_ENV=test nyc mocha tests/specs/integration/*-spec.js --timeout 10000 --exit || true",
+    "test": "npm run lint && npm run unit && npm run integration"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "http-status-codes": "^1.3.0",
+    "joi": "^13.2.0",
+    "jsonwebtoken": "^8.2.0",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "chai-json": "^1.0.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "mocha": "^5.0.3",
+    "nock": "^9.2.3",
+    "nyc": "^11.4.1",
+    "rewire": "^4.0.0",
+    "should": "^13.2.1",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^3.0.0"
+  }
+}

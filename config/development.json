@@ -1,0 +1,9 @@
+{
+    "db": {
+        "url": "mongodb://claimant:claimant@ds119969.mlab.com:19969/claimants-db"
+    },
+    "auth": {
+        "user": "test",
+        "password": "test"
+    }
+}
