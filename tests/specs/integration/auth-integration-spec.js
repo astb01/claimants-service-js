@@ -2,6 +2,7 @@ const chai = require('chai');
 const chaiHtpp = require('chai-http');
 const { auth: { user, password } } = require('config');
 const dirtyChai = require('dirty-chai');
+const { OK, UNAUTHORIZED, BAD_REQUEST } = require('http-status-codes');
 
 const expect = chai.expect; // eslint-disable-line prefer-destructuring
 
@@ -22,7 +23,7 @@ describe('Authentication', () => {
 
     const { token } = JSON.parse(response.text);
 
-    expect(response.status).to.equal(200);
+    expect(response.status).to.equal(OK);
     expect(token).to.not.be.null();
   });
 
@@ -32,7 +33,7 @@ describe('Authentication', () => {
         .post(`${apiBase}`)
         .send({ password: '12131' });
     } catch (err) {
-      expect(err.status).to.equal(400);
+      expect(err.status).to.equal(BAD_REQUEST);
     }
   });
 
@@ -40,7 +41,7 @@ describe('Authentication', () => {
     try {
       await chai.request(api).post(`${apiBase}`).send({ username: 'test' });
     } catch (err) {
-      expect(err.status).to.equal(400);
+      expect(err.status).to.equal(BAD_REQUEST);
     }
   });
 
@@ -53,7 +54,7 @@ describe('Authentication', () => {
           password: '12313',
         });
     } catch (err) {
-      expect(err.status).to.equal(401);
+      expect(err.status).to.equal(UNAUTHORIZED);
     }
   });
 
@@ -66,7 +67,7 @@ describe('Authentication', () => {
           password: '12313',
         });
     } catch (err) {
-      expect(err.status).to.equal(401);
+      expect(err.status).to.equal(UNAUTHORIZED);
     }
   });
 });
