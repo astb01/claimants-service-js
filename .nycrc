@@ -1,0 +1,13 @@
+{
+    "exclude": [
+        "tests/**/*-spec.js",
+        "tests/data/**/*.js",
+        "services/auth/*.js",
+        "models/seed/*.js",
+        "server.js"
+    ],
+    "reporter": [
+        "text",
+        "html"
+    ]
+}
