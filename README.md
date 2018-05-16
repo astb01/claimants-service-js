@@ -21,6 +21,11 @@ The following endpoints are exposed:
 
 For this project to run you need to install Node. To do so please visit the Node website: https://nodejs.org/en/download/
 
+This project also makes use of MongoDB. You can either:
+
+* Download it here: https://www.mongodb.com/download-center?jmp=nav#atlas
+* Or use the MLab DaaS hosted service: https://mlab.com/
+
 ## Getting Started
 
 Once you have checked out the project to a directory of your liking, simply run the following command to download the relevant dependencies:
