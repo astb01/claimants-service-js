@@ -12,7 +12,7 @@ The following endpoints are exposed:
 | ------------- | ------------------------- | ------------------------------------------ |
 | GET           | /api/claimants            | Retrieves all claimants                    |
 | GET           | /api/claimants/:id        | Retrieves a claimant by their ID           |
-| GET           | /api/claimants/nino/:nino | Retrieves a claimant by unique reference   |
+| GET           | /api/claimants/ref/:refNo | Retrieves a claimant by unique reference   |
 | POST          | /api/claimants            | Creates a claimant                         |
 | PUT           | /api/claimants/:id        | Updates a claimant using their ID          |
 | DEL           | /api/claimants/:id        | Deletes a claimant using their ID          |
