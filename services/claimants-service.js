@@ -17,7 +17,7 @@ const createValidationSchema = Joi.object().keys({
     .regex(/^[a-zA-Z]{2,}\d{6}[a-zA-Z0-9]{6}$/)
     .allow('')
     .allow(null),
-  nino: Joi.string()
+  refNo: Joi.string()
     .regex(/^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$/)
     .required(),
 }).options({ allowUnknown: true, abortEarly: true });
@@ -117,12 +117,12 @@ const deleteClaimant = async (req, res) => {
   return res.send(deletedClaimant);
 };
 
-const getClaimantByNINO = async (req, res) => {
-  const { nino } = req.params;
-  const claimant = await Claimant.findOne({ nino });
+const getClaimantByRefNo = async (req, res) => {
+  const { refNo } = req.params;
+  const claimant = await Claimant.findOne({ refNo });
 
   if (!claimant) {
-    return res.status(NOT_FOUND).send(`Claimant matching NINO ${nino} not found`);
+    return res.status(NOT_FOUND).send(`Claimant matching Ref No ${refNo} not found`);
   }
 
   return res.send(claimant);
@@ -134,5 +134,5 @@ module.exports = {
   createClaimant,
   updateClaimant,
   deleteClaimant,
-  getClaimantByNINO,
+  getClaimantByRefNo,
 };

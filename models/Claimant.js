@@ -7,7 +7,7 @@ const ClaimantSchema = new mongoose.Schema(
     street: { type: String, required: true },
     city: { type: String, required: true },
     postCode: { type: String, required: true },
-    nino: { type: String, required: true },
+    refNo: { type: String, required: true },
     drivingLicenceNo: { type: String, default: '' },
     dob: { type: String, required: true },
   },

@@ -1,8 +1,8 @@
 {
     "drivingLicenceServiceUrl": "https://driving-licence",
     "drivingLicenceServiceEndPoint": "verify",
-    "ninoServiceUrl": "https://nino-service",
-    "ninoServicePath": "validate",
+    "refNoServiceUrl": "https://refno-service",
+    "refNoServicePath": "validate",
     "secret": "567c988f-30c1-40a0-bb6e-addbad311635",
     "port": "8080",
     "tokenExpiry": 3600,

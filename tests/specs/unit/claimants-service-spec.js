@@ -115,13 +115,13 @@ describe('Claimants Service', () => {
     let createStub;
     const req = {};
     let drivingLicenceStub;
-    const createRequest = (drivingLicenceNo, nino) => ({
+    const createRequest = (drivingLicenceNo, refNo) => ({
       firstName: 'John',
       lastName: 'Doe',
       street: 'Some street',
       city: 'Some City',
       postCode: 'M12 4RT',
-      nino,
+      refNo,
       drivingLicenceNo,
     });
 
@@ -284,7 +284,7 @@ describe('Claimants Service', () => {
       expect(res.send).to.have.been.calledWith(expectedSingleResult);
     });
 
-    it('Should return 400 when NINO is not valid', async () => {
+    it('Should return 400 when Ref No is not valid', async () => {
       const res = {
         send: sandbox.spy(),
         status: sandbox.stub(),
@@ -372,14 +372,14 @@ describe('Claimants Service', () => {
       expect(res.send).to.have.been.calledWith(errorMessage);
     });
 
-    it('Should prevent a claimant\'s NINO from being changed', async () => {
+    it('Should prevent a claimant\'s Ref No from being changed', async () => {
       const res = {
         send: sandbox.spy(),
         status: sandbox.stub(),
       };
 
       req = createUpdateRequest('12345678');
-      req.body.nino = 'JT123456G';
+      req.body.refNo = 'JT123456G';
 
       joiMock = {
         validate: (body, schema, cb) => {
@@ -451,7 +451,7 @@ describe('Claimants Service', () => {
     });
   });
 
-  describe('Retrieve By NINO', () => {
+  describe('Retrieve By Ref No', () => {
     let findOneStub;
     let req = {};
 
@@ -463,7 +463,7 @@ describe('Claimants Service', () => {
       sandbox.restore();
     });
 
-    it('Should retrieve claimant by NINO', async () => {
+    it('Should retrieve claimant by Ref No', async () => {
       const res = {
         send: sandbox.spy(),
       };
@@ -472,16 +472,16 @@ describe('Claimants Service', () => {
         params: '',
       };
 
-      req.params.nino = 'JF123456G';
+      req.params.refNo = 'JF123456G';
 
       findOneStub.resolves(expectedSingleResult);
 
-      await claimantsService.getClaimantByNINO(req, res);
+      await claimantsService.getClaimantByRefNo(req, res);
 
       expect(res.send).to.have.been.calledOnce();
     });
 
-    it('Should return 404 when claimant for given NINO not found', async () => {
+    it('Should return 404 when claimant for given Ref No not found', async () => {
       const res = {
         send: sandbox.spy(),
         status: sandbox.stub(),
@@ -491,14 +491,14 @@ describe('Claimants Service', () => {
         params: {},
       };
 
-      req.params.nino = 'JF123456X';
+      req.params.refNo = 'JF123456X';
 
-      const errorMessage = `Claimant matching NINO ${req.params.nino} not found`;
+      const errorMessage = `Claimant matching Ref No ${req.params.refNo} not found`;
 
       findOneStub.returns(null);
       res.status.withArgs(NOT_FOUND).returns(res);
 
-      await claimantsService.getClaimantByNINO(req, res);
+      await claimantsService.getClaimantByRefNo(req, res);
 
       expect(res.send).to.have.been.calledWith(errorMessage);
     });

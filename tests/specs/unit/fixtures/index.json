@@ -6,7 +6,7 @@
                     "id": 1,
                     "firstName": "John",
                     "lastName": "Doe",
-                    "nino": "HG123456T"
+                    "refNo": "HG123456T"
                 }
             ]
         },
@@ -24,7 +24,7 @@
                     "id": 1,
                     "firstName": "John",
                     "lastName": "Doe",
-                    "nino": "HG123456T"
+                    "refNo": "HG123456T"
                 }
             },
             "response": {
@@ -40,7 +40,7 @@
                     "id": 1,
                     "firstName": "John",
                     "lastName": "Doe",
-                    "nino": "HG123456T"
+                    "refNo": "HG123456T"
                 }
             },
             "response": {
@@ -78,7 +78,7 @@
                 }
             }
         },
-        "invalidNino": {
+        "invalidRefNo": {
             "response": {
                 "statusCode": 400,
                 "headers": {

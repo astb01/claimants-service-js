@@ -32,7 +32,7 @@ describe('Claimants API:', () => {
     newClaimant.city = 'Manchester';
     newClaimant.postCode = 'M3 4RF';
     newClaimant.dob = '2011-10-31';
-    newClaimant.nino = 'AS234567H';
+    newClaimant.refNo = 'AS234567H';
 
     await Claimant.remove({}, (err) => {}); // eslint-disable-line no-unused-vars
   });
@@ -97,7 +97,7 @@ describe('Claimants API:', () => {
       expect(response.body).to.have.property('street');
       expect(response.body).to.have.property('city');
       expect(response.body).to.have.property('postCode');
-      expect(response.body).to.have.property('nino');
+      expect(response.body).to.have.property('refNo');
       expect(response.body).to.have.property('drivingLicenceNo');
       expect(response.body).to.have.property('dob');
     });
@@ -141,7 +141,7 @@ describe('Claimants API:', () => {
       expect(response.body).to.have.property('street').eql(newClaimant.street);
       expect(response.body).to.have.property('city').eql(newClaimant.city);
       expect(response.body).to.have.property('postCode').eql(newClaimant.postCode);
-      expect(response.body).to.have.property('nino').eql(newClaimant.nino);
+      expect(response.body).to.have.property('refNo').eql(newClaimant.refNo);
       expect(response.body).to.have.property('drivingLicenceNo').eql(newClaimant.drivingLicenceNo);
       expect(response.body).to.have.property('dob').eql(newClaimant.dob);
     });
@@ -195,9 +195,9 @@ describe('Claimants API:', () => {
       }
     });
 
-    it('Should reject update when NINO provided in body', async () => {
+    it('Should reject update when Ref No provided in body', async () => {
       const claimantId = '5a8ea050fe07b60eda004c6e';
-      const updateRequest = { nino: 'JT321345G' };
+      const updateRequest = { refNo: 'JT321345G' };
 
       try {
         await chai.request(api)
@@ -247,7 +247,7 @@ describe('Claimants API:', () => {
     });
   });
 
-  describe(`GET ${apiBase}/:nino`, () => {
+  describe(`GET ${apiBase}/:ref`, () => {
     beforeEach(async () => {
       const response = await chai.request(api)
         .post('/login')
@@ -261,10 +261,10 @@ describe('Claimants API:', () => {
       authToken = details.token;
     });
 
-    it('Should find claimant by NINO', async () => {
+    it('Should find claimant by Ref No', async () => {
       const createdClaimant = await Claimant.create(newClaimant);
       const response = await chai.request(api)
-        .get(`${apiBase}/nino/${createdClaimant.nino}`)
+        .get(`${apiBase}/ref/${createdClaimant.refNo}`)
         .set('Authorization', `bearer ${authToken}`);
 
       expect(response).to.have.status(OK);
@@ -274,17 +274,17 @@ describe('Claimants API:', () => {
       expect(response.body).to.have.property('street').eql(createdClaimant.street);
       expect(response.body).to.have.property('city').eql(createdClaimant.city);
       expect(response.body).to.have.property('postCode').eql(createdClaimant.postCode);
-      expect(response.body).to.have.property('nino').eql(createdClaimant.nino);
+      expect(response.body).to.have.property('refNo').eql(createdClaimant.refNo);
       expect(response.body).to.have.property('drivingLicenceNo').eql(createdClaimant.drivingLicenceNo);
       expect(response.body).to.have.property('dob').eql(createdClaimant.dob);
     });
 
-    it('Should return 404 when claimant not found by NINO', async () => {
-      const nino = 'BG123456T';
+    it('Should return 404 when claimant not found by Ref No', async () => {
+      const refNo = 'BG123456T';
 
       try {
         await chai.request(api)
-          .get(`${apiBase}/nino/${nino}`)
+          .get(`${apiBase}/ref/${refNo}`)
           .set('Authorization', `bearer ${authToken}`);
       } catch (err) {
         expect(err.status).to.equal(NOT_FOUND);
@@ -317,8 +317,8 @@ describe('Claimants API:', () => {
       nock.cleanAll();
     });
 
-    it('Should return 400 when NINO not provided on POST', async () => {
-      newClaimant.nino = '';
+    it('Should return 400 when Ref No not provided on POST', async () => {
+      newClaimant.refNo = '';
 
       try {
         await chai.request(api)
@@ -330,8 +330,8 @@ describe('Claimants API:', () => {
       }
     });
 
-    it('Should return 400 when NINO is not the correct format', async () => {
-      newClaimant.nino = 'ASDF';
+    it('Should return 400 when Ref No is not the correct format', async () => {
+      newClaimant.refNo = 'ASDF';
 
       try {
         await chai.request(api)
@@ -410,7 +410,7 @@ describe('Claimants API:', () => {
         expect(response.body).to.have.property('street').eql(newClaimant.street);
         expect(response.body).to.have.property('city').eql(newClaimant.city);
         expect(response.body).to.have.property('postCode').eql(newClaimant.postCode);
-        expect(response.body).to.have.property('nino').eql(newClaimant.nino);
+        expect(response.body).to.have.property('refNo').eql(newClaimant.refNo);
         expect(response.body).to.have.property('drivingLicenceNo').eql(newClaimant.drivingLicenceNo);
         expect(response.body).to.have.property('dob').eql(newClaimant.dob);
       });

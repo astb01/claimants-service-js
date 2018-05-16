@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const claimantService = require('../services/claimants-service');
 
-// const authService = require('../services/auth/auth')
-
 router.get('/claimants', claimantService.getClaimants);
 
 router.get('/claimants/:claimantId', claimantService.getClaimantById);
@@ -13,6 +11,6 @@ router.put('/claimants/:claimantId', claimantService.updateClaimant);
 
 router.delete('/claimants/:claimantId', claimantService.deleteClaimant);
 
-router.get('/claimants/nino/:nino', claimantService.getClaimantByNINO);
+router.get('/claimants/ref/:refNo', claimantService.getClaimantByRefNo);
 
 module.exports = router;
