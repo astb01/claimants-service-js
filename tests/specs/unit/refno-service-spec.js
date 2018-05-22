@@ -6,7 +6,7 @@ const nock = require('nock');
 const config = require('config');
 const { OK, BAD_REQUEST } = require('http-status-codes');
 
-const ninoService = require('../../../services/refno-service');
+const refNoService = require('../../../services/refno-service');
 
 const serviceUrl = config.get('refNoServiceUrl');
 const servicePath = config.get('refNoServicePath');
@@ -15,7 +15,7 @@ chai.use(dirtyChai);
 
 describe('Ref No Service', () => {
   it('Should be defined', () => {
-    expect(ninoService).to.not.be.undefined();
+    expect(refNoService).to.not.be.undefined();
   });
 
   describe('Positive Tests', () => {
@@ -39,7 +39,7 @@ describe('Ref No Service', () => {
     });
 
     it(`Should return with status ${OK} when valid details provided`, async () => {
-      const result = await ninoService.validate(requestBody);
+      const result = await refNoService.validate(requestBody);
 
       expect(result).to.not.be.undefined();
       expect(result.status).to.equal(OK);
@@ -67,7 +67,7 @@ describe('Ref No Service', () => {
     });
 
     it(`Should return ${BAD_REQUEST} when invalid request used`, async () => {
-      const result = await ninoService.validate(requestBody);
+      const result = await refNoService.validate(requestBody);
 
       expect(result).to.not.be.undefined();
 
