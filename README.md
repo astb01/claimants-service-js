@@ -36,7 +36,7 @@ npm install
 
 ## Dependencies
 
-In summary here are a list of the dependencies used within this project (for further details please refer to the __package.json__ file.):
+In summary here is a list of the dependencies used within this project (for further details please refer to the __package.json__ file.):
 
 * [Express JS](https://expressjs.com/)
 * [Mongoose](http://mongoosejs.com/)
